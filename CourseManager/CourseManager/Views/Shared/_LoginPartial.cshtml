@@ -1,0 +1,24 @@
+﻿@using CourseManager.Models.ValidatableObjects;
+@{
+    var cookie = HttpContext.Current.Request.Cookies["user"];
+    if (cookie == null)
+    {
+        cookie = new HttpCookie("user", " ");
+    }
+}
+
+@if (!string.IsNullOrWhiteSpace(cookie.Value))
+{
+    <text>
+        你好，@cookie.Value.DecryptQueryString();
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">退出</a>
+        }
+    </text>
+} else {
+    <ul>
+        <li>@Html.ActionLink("注册", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

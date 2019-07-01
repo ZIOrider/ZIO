@@ -1,0 +1,11 @@
+﻿@using CourseManager.Models;
+@{
+    var sidebars = (List<SideBars>)ViewBag.SideBars; 
+}
+
+<ul id="menu" class="nav navbar-nav sidebar">
+    @foreach (var sidebar in sidebars)
+    {
+        <li>@Html.ActionLink(sidebar.Name.Trim(),sidebar.Action.Trim(),sidebar.Controller.Trim(), new { area = "" }, new { @class = "navbar-brand"})</li>
+    }
+</ul>

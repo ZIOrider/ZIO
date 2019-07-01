@@ -1,0 +1,57 @@
+﻿@model CourseManager.Models.ValidatableObjects.LoginInput
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .login-container {
+            padding-top:200px;
+        }
+    </style>
+</head>
+    <body>
+        <div class="container body-content">
+            <div class="col-md-9 float-right login-container">
+                @using (Html.BeginForm()) {
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <legend>登录</legend>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Account)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Account)
+                        @Html.ValidationMessageFor(model => model.Account)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Password)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </div>
+
+                    <p>
+                        <input type="submit" value="登录" />
+                    </p>
+                </fieldset>
+                }
+            </div>
+
+        </div>
+        <br />
+        @Scripts.Render("~/bundles/jquery")
+    </body>
+</html>

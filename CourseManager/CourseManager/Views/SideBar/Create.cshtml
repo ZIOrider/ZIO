@@ -1,0 +1,59 @@
+﻿@model CourseManager.Models.SideBars
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SideBars</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-lable col-md-2"})
+        </div>
+        <div class="editor-field col-md-10">
+            @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Controller, htmlAttributes: new { @class = "control-lable col-md-2"})
+        </div>
+        <div class="editor-field col-md-10">
+            @Html.TextBoxFor(model => model.Controller, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Controller)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Action, htmlAttributes: new { @class = "control-lable col-md-2"})
+        </div>
+        <div class="editor-field col-md-10">
+            @Html.TextBoxFor(model => model.Action, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.Action)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.order, htmlAttributes: new { @class = "control-lable col-md-2"})
+        </div>
+        <div class="editor-field col-md-10">
+            @Html.TextBoxFor(model => model.order, new {@class = "form-control"})
+            @Html.ValidationMessageFor(model => model.order)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
